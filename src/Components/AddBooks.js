@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { baseUrl } from '../Globals'
 
 const AddBooks = ({book}) => {
 
@@ -11,6 +12,16 @@ const AddBooks = ({book}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault(); 
+        fetch(baseUrl + '/books', {
+            method: "POST", 
+            headers: {
+                "Accept" : "application/json", 
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify(state)
+        })
+            .then(resp => resp.json())
+            .then(data => console.log(data))
     }
 
     const handleChange = (e) => {
