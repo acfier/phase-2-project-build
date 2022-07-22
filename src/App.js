@@ -12,7 +12,7 @@ const App = () => {
   const [books, setBooks ] = useState([])
 
   useEffect(() => {
-    fetch(baseUrl + '/users') 
+    fetch(baseUrl + '/books') 
     .then(resp => resp.json())
     .then(data => setBooks(data))
   }, [])
